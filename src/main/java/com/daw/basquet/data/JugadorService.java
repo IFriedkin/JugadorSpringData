@@ -17,8 +17,14 @@ public class JugadorService {
 
     public void testJugador(){
 
+        //Se buscan los equipos en la base de datos.
         Equipo equipo1 = equipoRepository.findByNombre("Chicago Bulls");
+        Equipo equipo2 = equipoRepository.findByNombre("New York Knicks");
+        Equipo equipo3 = equipoRepository.findByNombre("Toronto Raptors");
+        Equipo equipo4 = equipoRepository.findByNombre("Boston Celtics");
+        Equipo equipo5 = equipoRepository.findByNombre("Dallas Mavericks");
 
+        //Se crean los jugadores y se le añade un equipo, tras eso se guardan sus datos en la base de datos.
         Jugador jugador1 = new Jugador(
                 "Carlos",
                 LocalDate.of(1991,1,9),
@@ -41,7 +47,6 @@ public class JugadorService {
         jugador2.setEquipo(equipo1);
         jugadorRepository.save(jugador2);
 
-        Equipo equipo2 = equipoRepository.findByNombre("New York Knicks");
         Jugador jugador3 = new Jugador(
                 "Hugo",
                 LocalDate.of(1998,1,1),
@@ -64,7 +69,7 @@ public class JugadorService {
         jugador4.setEquipo(equipo2);
         jugadorRepository.save(jugador4);
 
-        Equipo equipo3 = equipoRepository.findByNombre("Toronto Raptors");
+
         Jugador jugador5 = new Jugador(
                 "Gonzalo",
                 LocalDate.of(1992,1,1),
@@ -87,7 +92,7 @@ public class JugadorService {
         jugador6.setEquipo(equipo3);
         jugadorRepository.save(jugador6);
 
-        Equipo equipo4 = equipoRepository.findByNombre("Boston Celtics");
+
         Jugador jugador7 = new Jugador(
                 "Pablo",
                 LocalDate.of(1996,1,1),
@@ -110,7 +115,6 @@ public class JugadorService {
         jugador8.setEquipo(equipo4);
         jugadorRepository.save(jugador8);
 
-        Equipo equipo5 = equipoRepository.findByNombre("Dallas Mavericks");
         Jugador jugador9 = new Jugador(
                 "Dorian",
                 LocalDate.of(1993,1,1),
@@ -133,6 +137,7 @@ public class JugadorService {
         jugador10.setEquipo(equipo5);
         jugadorRepository.save(jugador10);
 
+        //Se hacen las consultas a la base de datos.
         System.out.println("Consulta jugador por nombre: " + jugadorRepository.findByNombre("Anders"));
         System.out.println("Consulta jugadores con número de canastas mayor o igual a 12: "
                 + jugadorRepository.findByNumCanastasGreaterThanEqual(12));
