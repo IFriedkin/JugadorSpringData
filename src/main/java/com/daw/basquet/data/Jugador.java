@@ -1,8 +1,11 @@
 package com.daw.basquet.data;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
+@Data
 @Entity
 public class Jugador {
     @Id
@@ -15,6 +18,12 @@ public class Jugador {
     private Integer numAsistencias;
     private String posicion;
 
+    @ManyToOne
+    private Equipo equipo;
+
+    public Jugador() {
+    }
+
     public Jugador(String nombre, LocalDate fechaNacimiento, Integer numCanastas, Integer numRebotes, Integer numAsistencias, String posicion) {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
@@ -22,104 +31,5 @@ public class Jugador {
         this.numRebotes = numRebotes;
         this.numAsistencias = numAsistencias;
         this.posicion = posicion;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Jugador jugador = (Jugador) o;
-
-        if (id != null ? !id.equals(jugador.id) : jugador.id != null) return false;
-        if (nombre != null ? !nombre.equals(jugador.nombre) : jugador.nombre != null) return false;
-        if (fechaNacimiento != null ? !fechaNacimiento.equals(jugador.fechaNacimiento) : jugador.fechaNacimiento != null)
-            return false;
-        if (numCanastas != null ? !numCanastas.equals(jugador.numCanastas) : jugador.numCanastas != null) return false;
-        if (numRebotes != null ? !numRebotes.equals(jugador.numRebotes) : jugador.numRebotes != null) return false;
-        if (numAsistencias != null ? !numAsistencias.equals(jugador.numAsistencias) : jugador.numAsistencias != null)
-            return false;
-        return posicion != null ? posicion.equals(jugador.posicion) : jugador.posicion == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
-        result = 31 * result + (fechaNacimiento != null ? fechaNacimiento.hashCode() : 0);
-        result = 31 * result + (numCanastas != null ? numCanastas.hashCode() : 0);
-        result = 31 * result + (numRebotes != null ? numRebotes.hashCode() : 0);
-        result = 31 * result + (numAsistencias != null ? numAsistencias.hashCode() : 0);
-        result = 31 * result + (posicion != null ? posicion.hashCode() : 0);
-        return result;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public Integer getNumCanastas() {
-        return numCanastas;
-    }
-
-    public void setNumCanastas(Integer numCanastas) {
-        this.numCanastas = numCanastas;
-    }
-
-    public Integer getNumRebotes() {
-        return numRebotes;
-    }
-
-    public void setNumRebotes(Integer numRebotes) {
-        this.numRebotes = numRebotes;
-    }
-
-    public Integer getNumAsistencias() {
-        return numAsistencias;
-    }
-
-    public void setNumAsistencias(Integer numAsistencias) {
-        this.numAsistencias = numAsistencias;
-    }
-
-    public String getPosicion() {
-        return posicion;
-    }
-
-    public void setPosicion(String posicion) {
-        this.posicion = posicion;
-    }
-
-    @Override
-    public String toString() {
-        return "Jugador{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", fechaNacimiento=" + fechaNacimiento +
-                ", numCanastas=" + numCanastas +
-                ", numRebotes=" + numRebotes +
-                ", numAsistencias=" + numAsistencias +
-                ", posicion='" + posicion + '\'' +
-                '}';
     }
 }

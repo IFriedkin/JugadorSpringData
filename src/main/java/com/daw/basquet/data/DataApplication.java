@@ -10,7 +10,7 @@ public class DataApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context= SpringApplication.run(DataApplication.class, args);
 
+		context.getBean(EquipoService.class).testEquipo();
 		context.getBean(JugadorService.class).testJugador();
-
 	}
 }
